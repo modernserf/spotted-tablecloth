@@ -17,11 +17,9 @@ const BodyContainer = styled.div`
     padding: 16px;
 `
 
-const modules = buildList(stories)
-
 class Sidebar extends React.Component {
     render () {
-        const { setComponent } = this.props
+        const { modules } = this.props
         return <nav>
             <ul>{modules.map((m, i) =>
                 <li key={i}>
@@ -48,13 +46,8 @@ class Sidebar extends React.Component {
 }
 
 export default class StoryBook extends React.Component {
-    state = {
-        component: null,
-    }
-    setComponent = (component) => {
-        this.setState({ component })
-    }
     render () {
+        const modules = buildList(stories)
         const { parent, child } = this.props.url.query
         const parentModule = modules.find(({ title }) => title === parent) ||
             modules[0]
@@ -68,8 +61,8 @@ export default class StoryBook extends React.Component {
                 </Head>
                 <SidebarContainer>
                     <Sidebar
+                        modules={modules}
                         component={Component}
-                        setComponent={this.setComponent}
                     />
                 </SidebarContainer>
                 <BodyContainer>
