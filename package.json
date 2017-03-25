@@ -4,9 +4,7 @@
 	"description": "What am I about?",
 	"main": "server.js",
 	"scripts": {
-		"storybook": "start-storybook -p 5555 -c config/storybook",
-		"server": "node server.js",
-		"start": "npm run storybook & npm run server"
+		"start": "node server.js"
 	},
 	"dependencies": {
 		"express": "^4.15.2",
