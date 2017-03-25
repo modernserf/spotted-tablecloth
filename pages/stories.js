@@ -2,7 +2,6 @@ import React from 'react';
 import stories from '../.data/stories';
 
 const modules = buildList(stories)
-console.log(modules)
 
 class Sidebar extends React.Component {
     render () {
