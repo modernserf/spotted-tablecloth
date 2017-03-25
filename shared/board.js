@@ -1,10 +1,8 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react'
+import styled from 'styled-components'
 import Column from './column'
 
 const Container = styled.section`
-    position: absolute;
-    top: 0;
     width: 100%;
     height: 100%;
     background-color: #06c;
@@ -27,11 +25,15 @@ const Body = styled.ul`
     align-items: stretch;
     overflow: scroll;
     height: 100%;
+    padding: 16px;
 `
 
 const ColumnWrap = styled.li`
-    padding: 8px;
+    margin-left: 16px;
     flex: 0 0 260px;
+    &:first-child {
+        margin-left: 0;
+    }
 `
 
 const AddColumnBody = styled.div`
@@ -45,6 +47,7 @@ const AddColumnBody = styled.div`
     align-items: center;
     justify-content: center;
     padding: 8px;
+
 `
 
 const AddColumn = () => (

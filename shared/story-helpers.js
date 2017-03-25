@@ -1,5 +1,5 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react'
+import styled from 'styled-components'
 
 const Label = styled.label`
     width: 100px;
@@ -14,25 +14,25 @@ export function Range ({ value, onChange }) {
         max={1000}/>
 }
 
-export class Container extends React.Component  {
+export class Container extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
             width: props.width,
             height: props.height,
-            hover: false,
+            hover: false
         }
     }
     setValue = (key) => (value) => {
-        this.setState({[key]:value})
+        this.setState({[key]: value})
     }
     render () {
         const { width, height, hover } = this.state
         const style = {
-            border: hover ? "1px dashed #ccc" : '1px solid white',
-            width: width || "auto",
-            height: height || "auto",
-            marginBottom: 16,
+            border: hover ? '1px dashed #ccc' : '1px solid white',
+            width: width || 'auto',
+            height: height || 'auto',
+            marginBottom: 16
         }
         return (
             <div>

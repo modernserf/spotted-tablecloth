@@ -82,7 +82,7 @@ export default class StoryBook extends React.Component {
 function buildList (modules) {
     return modules.map((m) => {
         const children = Object.entries(m)
-            .filter(([label]) => label !== "title")
+            .filter(([label]) => label !== 'title')
             .map(([label, component]) => ({ label, component }))
         return { title: m.title, children }
     })

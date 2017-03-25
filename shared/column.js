@@ -1,6 +1,7 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react'
+import styled from 'styled-components'
 import Card from './card'
+import { PlainButton } from './button'
 
 const ColumnBody = styled.section`
     width: 100%;
@@ -25,18 +26,21 @@ const CardWrap = styled.li`
     padding-bottom: 8px;
 `
 
-const AddCard = () => (
-    <div>Add a card…</div>
-)
+const AddCard = styled(PlainButton)`
+    color: #666;
+    font-size: 14px;
+`
 
 export default function Column ({ label, cards }) {
-    return <ColumnBody>
+  return <ColumnBody>
         <ColumnLabel>{label}</ColumnLabel>
         <ColumnInner>{cards.map(({ id, label, tags }) =>
             <CardWrap key={id}>
                 <Card label={label} tags={tags} />
             </CardWrap>
         )}</ColumnInner>
-        <AddCard />
+        <AddCard onClick={() => { console.log('add') }}>
+            Add a card…
+        </AddCard>
     </ColumnBody>
 }

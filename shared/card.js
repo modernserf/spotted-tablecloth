@@ -1,5 +1,5 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react'
+import styled from 'styled-components'
 
 const CardBody = styled.section`
     width: 100%;
@@ -27,7 +27,7 @@ export default function Card ({ label, tags }) {
 
 function truncate (text) {
     if (text.length > 140) {
-        return text.slice(0, 140) + "…"
+        return text.slice(0, 140) + '…'
     } else {
         return text
     }
