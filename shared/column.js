@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Card from './card'
 
 const ColumnBody = styled.section`
-    width: 240px;
+    width: 100%;
     padding: 8px;
     background-color: #eee;
     box-shadow: 0 0 4px rgba(0,0,0,0.1);

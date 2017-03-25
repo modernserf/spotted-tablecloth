@@ -11,7 +11,7 @@ module.exports = function (filename, mapPath) {
                 storybookShared = storybookShared.map(file => `shared/${file}`)
                 const storybookFiles = storybookPages
                     .concat(storybookShared)
-                    .filter((file) => file.match(/story/))
+                    .filter((file) => file.match(/story\.js/))
 
                 const template = `export default [${
                     storybookFiles.map((file) =>

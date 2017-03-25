@@ -5,8 +5,12 @@ import styled from 'styled-components'
 import stories from '../.data/stories'
 
 const Container = styled.section`
+    position: fixed;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: stretch;
+    height: 100%;
 `
 
 const SidebarContainer = styled.div`
@@ -14,7 +18,9 @@ const SidebarContainer = styled.div`
 `
 
 const BodyContainer = styled.div`
-    padding: 16px;
+    margin: 16px;
+    flex: 1 1 100%;
+    overflow: scroll;
 `
 
 class Sidebar extends React.Component {

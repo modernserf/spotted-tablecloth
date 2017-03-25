@@ -1,6 +1,5 @@
-import React from "react"
-import Column from "./column"
-import { Container } from './story-helpers'
+import React from "react";
+import Board from "./board";
 
 const cards = [
     "Letterpress unicorn slow-carb",
@@ -15,28 +14,23 @@ const cards = [
     "Truffaut prism tumeric sustainable thundercats",
     "mixtape locavore",
     "Polaroid bicycle rights PBR&B aesthetic",
+    "Tousled neutra seitan",
+    "air plant street art pickled hammock trust fund taxidermy raw denim",
 ].map((label, i) => ({ label, tags: [], id: i + 1 }))
 
+const cols = ["Backlog", "To Do", "Doing", "Done", "Released"]
+    .map((label, i) => ({
+        id: 100 + i,
+        label,
+        cards: cards.slice(i * 3, i * 3 + 3)
+    }))
+
 export default {
-    title: "Column",
+    title: "Board",
     "empty": () => (
-        <Container width={300}>
-            <Column label="To Do" cards={[]} />
-        </Container>
+        <Board label="Empty Board" columns={[]}/>
     ),
-    "with a few cards": () => (
-        <Container width={300}>
-            <Column label="Doing" cards={cards.slice(0,3)}/>
-        </Container>
-    ),
-    "with many cards": () => (
-        <Container width={300}>
-            <Column label="Doing" cards={cards}/>
-        </Container>
-    ),
-    "with a long label": () => (
-        <Container width={300}>
-            <Column label="The quick brown fox jumps over the lazy dog" cards={cards}/>
-        </Container>
+    "with columns": () => (
+        <Board label="Board with items" columns={cols} />
     )
 }
