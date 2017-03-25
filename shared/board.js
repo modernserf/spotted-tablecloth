@@ -1,15 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 import Column from './column'
+import { PlainButton } from './button'
 
 const Container = styled.section`
     width: 100%;
     height: 100%;
     background-color: #06c;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 `
 const Header = styled.header`
-    width: 100%;
     padding: 8px;
+    flex: 0 0 auto;
     background-color: #eee;
     box-shadow: 0 4px 4px rgba(0,0,0,0.1);
     z-index: 1;
@@ -21,10 +25,10 @@ const BoardTitle = styled.h1`
 `
 
 const Body = styled.ul`
+    flex: 1 1 auto;
     display: flex;
     align-items: stretch;
     overflow: scroll;
-    height: 100%;
     padding: 16px;
 `
 
@@ -36,7 +40,7 @@ const ColumnWrap = styled.li`
     }
 `
 
-const AddColumnBody = styled.div`
+const AddColumnBody = styled(PlainButton)`
     width: 100%;
     height: 100px;
     border-radius: 8px;

@@ -25,6 +25,12 @@ const cols = ['Backlog', 'To Do', 'Doing', 'Done', 'Released']
         cards: cards.slice(i * 3, i * 3 + 3)
     }))
 
+const bigCol = [{
+    id: 100,
+    label: 'To Do',
+    cards
+}]
+
 export default {
     title: 'Board',
     'empty': () => (
@@ -32,5 +38,8 @@ export default {
     ),
     'with columns': () => (
         <Board label="Board with items" columns={cols} />
+    ),
+    'with a big column': () => (
+        <Board label="Board with one big column" columns={bigCol} />
     )
 }

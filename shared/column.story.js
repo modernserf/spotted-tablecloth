@@ -30,7 +30,7 @@ export default {
         </Container>
     ),
     'with many cards': () => (
-        <Container width={300}>
+        <Container width={300} height={500}>
             <Column label="Doing" cards={cards}/>
         </Container>
     ),
