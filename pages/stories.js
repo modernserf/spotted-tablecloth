@@ -1,5 +1,21 @@
-import React from 'react';
-import stories from '../.data/stories';
+import Head from 'next/head'
+import Link from 'next/link'
+import React from 'react'
+import styled from 'styled-components'
+import stories from '../.data/stories'
+
+const Container = styled.section`
+    display: flex;
+    align-items: stretch;
+`
+
+const SidebarContainer = styled.div`
+    flex: 0 0 300px;
+`
+
+const BodyContainer = styled.div`
+    padding: 16px;
+`
 
 const modules = buildList(stories)
 
@@ -9,11 +25,20 @@ class Sidebar extends React.Component {
         return <nav>
             <ul>{modules.map((m, i) =>
                 <li key={i}>
-                    <h2>{m.title}</h2>
+                    <Link href={{
+                        pathname: 'stories',
+                        query: { parent: m.title }
+                    }}>
+                    <a><h2>{m.title}</h2></a>
+                    </Link>
                     <ul>{m.children.map(({ label, component }, j) =>
-                        <li key={j}
-                            onClick={() => setComponent(component)}>
-                            <h3>{label}</h3>
+                        <li key={j}>
+                            <Link href={{
+                                pathname: 'stories',
+                                query: { parent: m.title, child: label }
+                            }}>
+                            <a><h3>{label}</h3></a>
+                            </Link>
                         </li>
                     )}</ul>
                 </li>
@@ -30,19 +55,27 @@ export default class StoryBook extends React.Component {
         this.setState({ component })
     }
     render () {
-        const { component } = this.state
-        const Component = component || modules[0].children[0].component
-
+        const { parent, child } = this.props.url.query
+        const parentModule = modules.find(({ title }) => title === parent) ||
+            modules[0]
+        const childModule = parentModule.children.find(
+            ({ label }) => label === child) || parentModule.children[0]
+        const Component = childModule.component
         return (
-            <section>
-                <Sidebar
-                    component={component}
-                    setComponent={this.setComponent}
-                />
-                <div>
+            <Container>
+                <Head>
+                    <link rel="stylesheet" href="/style.css"></link>
+                </Head>
+                <SidebarContainer>
+                    <Sidebar
+                        component={Component}
+                        setComponent={this.setComponent}
+                    />
+                </SidebarContainer>
+                <BodyContainer>
                     <Component />
-                </div>
-            </section>
+                </BodyContainer>
+            </Container>
         )
     }
 }
