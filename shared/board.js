@@ -51,7 +51,9 @@ const AddColumnBody = styled(PlainButton)`
     align-items: center;
     justify-content: center;
     padding: 8px;
-
+    &:hover {
+        background-color: rgba(0,0,0,0.3);
+    }
 `
 
 const AddColumn = () => (

@@ -21,7 +21,6 @@ const ColumnHeader = styled.header`
 `
 const ColumnFooter = styled.footer`
     flex: 0 0 auto;
-    padding: 8px;
     box-shadow: 0 -8px 8px -4px #eee;
     z-index: 1;
 `
@@ -37,15 +36,23 @@ const ColumnLabel = styled.h1`
 const ColumnInner = styled.ul`
     overflow: scroll;
     flex: 0 1 auto;
-    padding: 8px;
+    padding: 8px 8px 0;
 `
 const CardWrap = styled.li`
     padding-bottom: 8px;
 `
 
 const AddCard = styled(PlainButton)`
+    display: block;
     color: #666;
     font-size: 14px;
+    padding: 8px;
+    text-align: left;
+    width: 100%;
+    &:hover {
+        background-color: rgba(0,0,0,0.1);
+        text-decoration: underline;
+    }
 `
 
 export default function Column ({ label, cards }) {

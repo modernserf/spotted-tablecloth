@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { PlainButton } from './button'
 
 const CardBody = styled.section`
     width: 100%;
@@ -8,6 +9,25 @@ const CardBody = styled.section`
     background-color: #fcfcfc;
     box-shadow: 0 0 4px rgba(0,0,0,0.1);
     padding: 8px;
+    &:hover {
+        background-color: #eee;
+    }
+    &:hover > .edit-button {
+        opacity: 1;
+    }
+`
+
+const CardEdit = styled(PlainButton)`
+    opacity: 0;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    border-radius: 4px;
+    font-size: 12px;
+    background-color: rgba(240,240,240,0.5);
+    &:hover {
+        background-color: rgba(224,224,224,0.5);
+    }
 `
 
 const CardTags = styled.div``
@@ -22,6 +42,7 @@ export default function Card ({ label, tags }) {
     return <CardBody>
         <CardTags tags={tags}/>
         <CardLabel>{truncate(label)}</CardLabel>
+        <CardEdit className="edit-button">✏️</CardEdit>
     </CardBody>
 }
 
