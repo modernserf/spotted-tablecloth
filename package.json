@@ -4,11 +4,9 @@
   "description": "What am I about?",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "react-scripts start"
   },
   "dependencies": {
-    "express": "^4.15.2",
-    "next": "2.0.0-beta.39",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "styled-components": "^1.4.4",
@@ -32,6 +30,7 @@
     "eslint-config-standard": "^7.1.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^6.10.3",
-    "eslint-plugin-standard": "^2.1.1"
+    "eslint-plugin-standard": "^2.1.1",
+    "react-scripts": "^0.9.5"
   }
 }

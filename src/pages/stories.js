@@ -1,9 +1,7 @@
-import Head from 'next/head'
-import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
-import stories from '../.data/stories'
-
+const r = require.context('../shared', true, /\.story\.js$/)
+const stories = r.keys().map((key) => r(key).default)
 const Container = styled.section`
     position: fixed;
     width: 100%;
@@ -33,7 +31,7 @@ class Sidebar extends React.Component {
                         pathname: 'stories',
                         query: { parent: m.title }
                     }}>
-                    <a><h2>{m.title}</h2></a>
+                    <h2>{m.title}</h2>
                     </Link>
                     <ul>{m.children.map(({ label, component }, j) =>
                         <li key={j}>
@@ -41,7 +39,7 @@ class Sidebar extends React.Component {
                                 pathname: 'stories',
                                 query: { parent: m.title, child: label }
                             }}>
-                            <a><h3>{label}</h3></a>
+                            <h3>{label}</h3>
                             </Link>
                         </li>
                     )}</ul>
@@ -62,9 +60,6 @@ export default class StoryBook extends React.Component {
         const Component = childModule.component
         return (
             <Container>
-                <Head>
-                    <link rel="stylesheet" href="/style.css"></link>
-                </Head>
                 <SidebarContainer>
                     <Sidebar
                         modules={modules}
@@ -86,4 +81,15 @@ function buildList (modules) {
             .map(([label, component]) => ({ label, component }))
         return { title: m.title, children }
     })
+}
+
+function Link ({ href, children }) {
+    return <a href={buildHref(href)}>{children}</a>
+}
+
+function buildHref ({ pathname, query }) {
+    const qs = Object.keys(query)
+        .reduce((arr, key) => arr.concat([`${key}=${encodeURIComponent(query[key])}`]), [])
+        .join('&')
+    return `/${pathname}?${qs}`
 }
